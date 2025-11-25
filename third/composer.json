@@ -1,0 +1,66 @@
+{
+	"name": "sia/trabalho",
+	"description": "Sistema via web",
+	"version": "0.0.1",
+	"time": "2052-11-04 21:30:00",
+	"type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Inácio Fonseca",
+            "email": "inacio@isec.pt",
+            "homepage": "http://www.isec.pt",
+            "role": "Developer"
+        }
+    ],
+    "support":{
+        "email": "inacio@isec.pt"
+    },
+    "lib_inacio":"php-activerecord/php-activerecord v1.2.0",
+    "app_download": [
+    		{"target": "public/fotos",
+    		 "files":{ "logo-isec-transparente.png":"http://www.isec.pt/assets_isec/logo-isec-transparente.png"},
+    		 "allow.htaccess": "BaseDir2All"
+    		}, 
+			{"target": "third/jscss",
+    		 "files":{ 
+		    	"chart.min.js":"https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.5.0/chart.min.js"
+		    	,"chart.min.css":"https://unpkg.com/charts.css/dist/charts.min.css"
+		    	,"bulma.min.css":"https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css"
+		    	,"fontawesome.js":"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/js/all.min.js"
+		    	,"fontawesome.css":"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+		    	,"bootstrap.min.js":"https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/js/bootstrap.min.js"
+		    	,"bootstrap.min.css":"https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/css/bootstrap.min.css"
+    			},
+    			"allow.htaccess": "Dir2All"
+    		},
+    		{ "target":"third/webfonts",
+    		  "files":{
+    		  	"fa-solid-900.woff2":"https://use.fontawesome.com/releases/v6.7.1/webfonts/fa-solid-900.woff2"
+    		  	,"fa-brands-400.woff2":"https://use.fontawesome.com/releases/v6.7.1/webfonts/fa-brands-400.woff2"
+    		  	,"fa-regular-400.woff2":"https://use.fontawesome.com/releases/v6.7.1/webfonts/fa-regular-400.woff2"
+    		  },
+    		  "allow.htaccess": "Dir2All"
+    		}
+    ],
+    "app_folder_structure": [
+    		"third/jscss",
+    		"third/webfonts",
+			"app/controller",
+			"app/model",
+			"app/view",
+    		"config",
+    		"public/fotos",
+    		"lib/templates/css",
+    		"lib/templates/js",
+			"resources",
+			"routes",
+			"tests"
+    ],
+	"require" : {
+        "php" : "^8.0"
+		,"phpmailer/phpmailer":"v6.12.0"
+		,"twig/twig":"v3.22.0"
+		,"smarty/smarty":"v5.6.0"
+    }
+}

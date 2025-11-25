@@ -1,0 +1,2 @@
+<?php
+echo "Hello XAMPP na porta 8082, está a funcionar!";
