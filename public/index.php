@@ -23,7 +23,7 @@ Podia terr isto no composer.json
 
 */
 
-
+/*
 //o app/controller é o namespace
 use app\controller\Login;
 // Login::login(); // usado na aula 3
@@ -38,7 +38,7 @@ $result = app\model\Login::select_record('inacio', 'ola');
 
 // dbg($result);
 
-
+*/
 
 // app\view\Login::render();
 
@@ -62,5 +62,7 @@ $result = app\model\Login::select_record('inacio', 'ola');
 
 // // Usar o array que criaste:
 // echo $template->render($arr);
+
+app\view\Login::render();
 
 ?>
