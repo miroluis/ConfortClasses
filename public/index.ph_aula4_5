@@ -24,17 +24,19 @@ spl_autoload_register(function($class){
 //app\model\Login::select_record('inacio', 'ola');
 
 // aula 4 video 5
-/* use app\controller\Login;
+use app\controller\Login;
 // Login::logout(); die();
 if(!Login::amIlogged()){
     // Login::login();
     echo "vou fazer login<br>";
     die();
 } 
-echo "código protegido<br>";
-app\model\Login::select_record('inacio', 'ola'); 
-*/
+// else {
+//     Login::logout();
+//     echo "deslogou<br>";
+// }
 
-app\view\Login::render();
+echo "código protegido<br>";
+app\model\Login::select_record('inacio', 'ola');
 
 ?>

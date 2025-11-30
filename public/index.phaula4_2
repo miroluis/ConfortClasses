@@ -1,0 +1,4 @@
+<?php
+include_once __DIR__ . '/../third/vendor/autoload.php';
+echo "Aula 4 item 2";
+?>

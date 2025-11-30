@@ -1,0 +1,26 @@
+<?php
+include_once __DIR__ . '/../third/vendor/autoload.php';
+
+//abaixo está o loader do login do controller
+// include_once __DIR__ . '/../app/controller/login.php';
+
+//no minuto 3:00 falamos sobre a possibilidade de usar o autoload do composer
+spl_autoload_register(function($class){
+    $file = __DIR__ . '/../' . str_replace('\\','/',strtolower( $class)) . '.php';
+    // echo "path: $path<br>";
+    if(file_exists($file)){
+        require_once $file;
+    }
+});
+
+//também podiamos usar um autoloader no composer.json. 
+//Aqui tenho mais visibilidade sobre o que se passa
+//porque depois tenho de voltar a correr o Setup.php para se tornar efetivo 
+//é pouco prático para versões de desenvolvimento
+
+//app\controller\Login::login(); // usado na aula 4 video 3
+use app\controller\Login;
+Login::login(); die();
+
+
+?>
