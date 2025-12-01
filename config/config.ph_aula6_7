@@ -16,11 +16,5 @@ function db_access(){
     return $pdo;
 }
 
-//VIEW Definições base
-define("TPL_FOLDER", __DIR__ . "/../app/view/bootstrap/php/");
-function load_tpl($file){
-    if(!file_exists(TPL_FOLDER . $file)) die("Template $file não existe");
-        $func = include TPL_FOLDER . $file;
-    return $func;
-}
+
 ?>

@@ -1,4 +1,8 @@
 <?php
+// O ficheiro devolve uma função que recebe um array $a.
+// Este array contém coisas como:
+// $a['title'] → o título da página
+// $a['content'] → o HTML gerado por outro template
 return function($a){ //trata-se de uma função anónima
     return <<< HTML_END_04
         <!DOCTYPE html>
