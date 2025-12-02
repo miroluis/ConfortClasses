@@ -2,7 +2,7 @@
 // o ficheiro devolve (return) uma função anónima.
 // Ou seja, quando este ficheiro é incluído com include ou require, ele devolve uma função que gera HTML.
 return function($a){ //trata-se de uma função anónima
-    return <<< HTML_END_03
+return <<< HTML_END_03
 <form method="post">
   
 <!-- utilizador | Text input-->

@@ -1,0 +1,48 @@
+<?php
+
+namespace app\view;
+include __DIR__ . "/../../config/config.php";
+class Login {
+static function render() {
+/* 
+// $func = include __DIR__ . '/bootstrap/php/aa_defs.php';
+// $func = include __DIR__ . "/bootstrap/php/login.php";
+$func = load_tpl("login.php");
+$form = $func([]);//form fica com o HTML do formulário de login
+
+
+// $func = include __DIR__ . "/bootstrap/php/base.php";
+//func fica com o conteúdo de base.php
+$func = load_tpl("base.php");
+
+
+$a = ['title' => 'Login',
+    // 'content' => 'o meu conteudo'];
+    'content' => $form];
+    //a é um array com o título e o conteúdo (o formulário de login)
+$html = $func($a); //chama a função vinda de base.php e injeta o array a
+echo $html;
+ */
+$arr = ['content',
+         "title" => "Login"
+];
+dbg($arr);
+/*
+//exemplo
+$page = load_Ntpl('base.php', "ola",
+                    'base.php', "ola");
+*/
+
+$page = load_Ntpl('base.php', [], 
+                'login.php', $arr, 
+                'menu.php',['menu']);
+                //o menu vai para menu php, o arr para  login e os 2 para a base
+echo $page;
+
+}
+}
+
+
+?>
+
+

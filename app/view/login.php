@@ -1,87 +1,31 @@
 <?php
 
-// É uma classe chamada Login, dentro do namespace app\view.
-// A função render():
-// carrega os templates
-// gera o HTML final da página de login
-// imprime na página
-// Este ficheiro é o controlador de visualização (view controller) da página de login.
-
-// include carrega o ficheiro login.php
-// Esse ficheiro devolve uma função anónima
-// $func passa a ser essa função
-// $func([]) chama essa função, que devolve o HTML do formulário
-
-// 🔎 Resultado:
-// $form contém o HTML do formulário de login (utilizador + password).
-
-// $func é a função vinda de base.php
-// Ela recebe o array $a
-// Devolve uma página HTML completa, com <html>, <head>, <body>, etc.
-
 namespace app\view;
 include __DIR__ . "/../../config/config.php";
 class Login {
 static function render() {
 
-// $func = include __DIR__ . '/bootstrap/php/aa_defs.php';
-// $func = include __DIR__ . "/bootstrap/php/login.php";
-$func = load_tpl("login.php");
-$form = $func([]);//form fica com o HTML do formulário de login
+$arr = ['content', // 'result' => 'content'
+         "title" => "Login"
+];
+// dbg($arr);
+$page = load_Ntpl('base.php', ['title' => 'Login'], //aqui era [] 
+                'login.php', $arr, 
+                'menu.php',['menu']);
+                //o menu vai para menu php, o arr para  login e os 2 para a base
 
-
-// $func = include __DIR__ . "/bootstrap/php/base.php";
-//func fica com o conteúdo de base.php
-$func = load_tpl("base.php");
-
-
-$a = ['title' => 'Login',
-    // 'content' => 'o meu conteudo'];
-    'content' => $form];
-    //a é um array com o título e o conteúdo (o formulário de login)
-$html = $func($a); //chama a função vinda de base.php e injeta o array a
-echo $html;
-}
-}
-
-/*
-
-        $form = <<< END_01
-	
-       
-
-END_01;
-//echo $form;
-$page = <<< END_02
-
-END_02;
+/* 
+//template, Valores a injetar, indice onde ficam os resultados
+$page = load_Ntpl('base.php', [],'', 
+                'login.php', $arr,'content' 
+                'menu.php',[], 'menu');
+                //o menu vai para menu php, o arr para  login e os 2 para a base
+ */
 
 echo $page;
 
-*/
-
-// //isto era o que tinha antes
-//         <!DOCTYPE html>
-//         <html lang="pt">
-//         <head>
-//             <meta charset="utf-8" />
-//             <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-//             <meta name="viewport" content="width=device-width,
-//                 initial-scale=1, shrink-to-fit=no" />
-//             <meta name="description" content="" />
-//             <meta name="author" content="" />
-//             <title>Login</title>
-
-//             <link href="../../third/jscss/bootstrap.min.css" rel="stylesheet" />
-//         </head>
-//         <body>
-//             FICA O FORMULARIO DO LOGIN...
-//             <script src="../../third/jscss/bootstrap.min.js"></script>
-//         </body>
-//         </html>
-
-
-
+}
+}
 ?>
 
 
