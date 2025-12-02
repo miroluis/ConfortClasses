@@ -4,6 +4,8 @@ define('DB_HOST', '127.0.0.1');
 define('DB_NAME', '04-php');
 define('DB_USER', 'root');
 define('DB_PASS', 'supersegredo');  
+define("LIB_TEMPLATE", "php");
+// define("LIB_TEMPLATE", "twig");
 
 function db_access(){
     $dsn = 'mysql:host=' . DB_HOST . ';dbname=' . DB_NAME . ';charset=utf8mb4';
@@ -16,15 +18,30 @@ function db_access(){
     return $pdo;
 }
 
+//require_once '/path/to/vendor/autoload.php';
+global $twig;
+
+$loader = new \Twig\Loader\FilesystemLoader(__DIR__ . '/../app/view/bootstrap/twig/');
+$twig = new \Twig\Environment($loader, [
+    //'cache' => '/path/to/compilation_cache',
+]);
+
 //VIEW Definições base
 define("TPL_FOLDER", __DIR__ . "/../app/view/bootstrap/php/");
 function load_tpl($file){
-    if(!file_exists(TPL_FOLDER . $file)) die("Template $file não existe");
-        $func = include TPL_FOLDER . $file;
-    return $func;
+    if(LIB_TEMPLATE === 'php'){
+        if(!file_exists(TPL_FOLDER . $file.'.php')) die("Template $file não existe");
+            $func = include TPL_FOLDER . $file.'.php';
+        return $func;
+    }else{
+        return function($a) use ($file){
+            global $twig;
+            return $twig->render($file.'.tpl', $a);
+        };
+    }
 }
 
-function load_Ntpl(...$args){
+function renderNtpl(...$args){
     $num = count($args);
     if($num === 0 || $num % 2 !== 0){
         throw new InvalidArgumentException("Número inválido de argumentos para load_Ntpl");

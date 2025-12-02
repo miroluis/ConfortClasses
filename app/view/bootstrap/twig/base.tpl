@@ -1,10 +1,3 @@
-<?php
-// O ficheiro devolve uma função que recebe um array $a.
-// Este array contém coisas como:
-// $a['title'] → o título da página
-// $a['content'] → o HTML gerado por outro template
-return function($a){ //trata-se de uma função anónima
-return <<< HTML_END_04
     <!DOCTYPE html>
     <html lang="pt">
     <head>
@@ -14,22 +7,15 @@ return <<< HTML_END_04
             initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>$a[title]</title>
+        <title>{{title}}</title>
 
         <link href="../third/jscss/bootstrap.min.css" rel="stylesheet" />
     </head>
     <body>
-{$a['menu']}
-{$a['content']}
-{$a['footer']}
+{{menu | raw}}
+{{content | raw}}
+        <!-- <footer class="bg-body-white text-center"> Template System: Twig </footer> -->
+         {{footer | raw}}
         <script src="../third/jscss/bootstrap.min.js"></script>
     </body>
     </html>
-HTML_END_04;
-}
-
-//$form
-// <footer class="bg-body-white text-center"> Template System: PHP </footer>
-?>
-
-

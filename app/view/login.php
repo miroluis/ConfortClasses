@@ -5,13 +5,18 @@ include __DIR__ . "/../../config/config.php";
 class Login {
 static function render() {
 
-$arr = ['content', // 'result' => 'content'
-         "title" => "Login"
+$arr = ['content'//, // 'result' => 'content'
+       //  "title" => "Login"
 ];
+
+// $arr = [ 0 =>'content'//, // 'result' => 'content'
+//        //  "title" => "Login"
+// ];
 // dbg($arr);
-$page = load_Ntpl('base.php', ['title' => 'Login'], //aqui era [] 
-                'login.php', $arr, 
-                'menu.php',['menu']);
+$page = renderNtpl('base', ['title' => 'Login'], //aqui era [] ,//
+                'login', $arr, 
+                'menu',['menu'],
+                'footer',['footer']);
                 //o menu vai para menu php, o arr para  login e os 2 para a base
 
 /* 
