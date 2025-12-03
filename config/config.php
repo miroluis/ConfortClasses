@@ -4,8 +4,8 @@ define('DB_HOST', '127.0.0.1');
 define('DB_NAME', '04-php');
 define('DB_USER', 'root');
 define('DB_PASS', 'supersegredo');  
-define("LIB_TEMPLATE", "php");
-// define("LIB_TEMPLATE", "twig");
+// define("LIB_TEMPLATE", "php");
+define("LIB_TEMPLATE", "twig");
 
 function db_access(){
     $dsn = 'mysql:host=' . DB_HOST . ';dbname=' . DB_NAME . ';charset=utf8mb4';
