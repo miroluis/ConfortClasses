@@ -16,8 +16,34 @@ spl_autoload_register(function($class){
     }
 });
 
+$a=$_GET['a'] ?? 'dashboard';
+app\controller\Login::login();
+//Zona protegida, só acessível a quem está logado
+switch ($a){
+    case 'dashboard':
+        app\view\Dashboard::render();
+        break;
+    // case 'login':
+    //     app\view\Login::render();
+    //     break;
+    case 'logout':
+        app\controller\Login::logout();
+        // echo "Logout efetuado.<br>";
+        break;
+    default:
+        echo "Ação inválida.<br>";
+        break;
+}
 
 
-// app\view\Login::render();
-app\view\Dashboard::render();
+// if(!Login::amIlogged()){
+//     Login::login();
+//     echo "Vou fazer login.<br>";
+//     die();
+// }
+// echo "Código protegido.<br>";
+// app\model\Login::select_record('inacio', 'ola');
+
+// // app\view\Login::render();
+// app\view\Dashboard::render();
 ?>
