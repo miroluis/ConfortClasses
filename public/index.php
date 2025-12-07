@@ -3,7 +3,8 @@ include_once __DIR__ . '/../third/vendor/autoload.php';
 
 function dbg($var){
     echo "<pre>";
-    var_dump($var);
+    #var_dump($var);
+    print_r($var);
     echo "</pre>";
 }
 

@@ -1,5 +1,6 @@
 <?php
 namespace app\controller;
+include_once __DIR__ . '/controller.php';
 class Login {
 //------------------------------
     public static function amIlogged(){
@@ -19,6 +20,9 @@ class Login {
         // $_SESSION['name'] = 'Joao';
         $cnt_session = count($_SESSION);
         if($cnt_session>0) return;
+
+        [$method, $input] = get_payload();
+        dbg($method); dbg($input);
 
         \app\view\Login::render(); die();
     }
