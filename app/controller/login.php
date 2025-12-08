@@ -23,6 +23,20 @@ class Login {
 
         [$method, $input] = get_payload();
         dbg($method); dbg($input);
+        unset($input['pass']);
+
+        // $rules_required = [
+        //     'login'=>'O Campo login é obrigatório.', //este caso é de evitar pois podes querer personalizar a msg
+        //     'pass'=>'O Campo senha é obrigatório.'
+        // ];
+        // $dados=keyIsInKeyArray($rules_required, $input);
+        // dbg($dados);
+
+        $rules_required=[
+            0=>'login', 'pass'
+        ];
+        $dados=valuesIsInKeyArray($rules_required, $input);
+        dbg($dados);
 
         \app\view\Login::render(); die();
     }

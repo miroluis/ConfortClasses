@@ -34,4 +34,18 @@ function prefix_keys(array $arr, string $prefix):array{
 
 }
 
+
+
+// vê se os valores de $rules existem nas keys de $input
+// retorna de $input os que existentem
+function valuesIsInKeyArray(array $rules, array $input):array{
+    return array_intersect_key($input, array_flip($rules));
+}
+
+// vê se as keys de $rules existem nas keys de $input
+// retorna de $input os elementos existentes
+function keyIsInKeyArray(array $rules, array $input):array{
+    return array_intersect_key($input, $rules);
+}
+
 ?>
