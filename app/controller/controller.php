@@ -20,9 +20,20 @@ function keyExistsInArray(array $rules, array $input):array{
 
 // Verificar se as keys existem e se o conteudo é não nulo
 // retorna array vazio se ok, caso contrário erros
-function validate_required(array $input, array $rules_required):array{
-
+function getMissingReqFields(array $rules_required, array $input): array{
+    if(array_is_list($rules_required))
+        return array_values(array_filter(
+            $rules_required, 
+            function($v, $k) use ($input): bool { return empty($input[$v]); },
+            ARRAY_FILTER_USE_BOTH
+        ));
+    return array_filter(
+        $rules_required, 
+        fn($k):bool => empty($input[$k]),
+        ARRAY_FILTER_USE_KEY
+    );
 }
+
 // valida se os campos existem e se os requeridos estão preenchidos
 // retorna: [$dados, $erros]
 function validate_input(array $input, array $rules_required, array $rules):array{
