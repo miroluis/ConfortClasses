@@ -56,7 +56,12 @@ class Login {
             else    
                 dbg("deu erro retornou 0 row's");
         }
-
+        dbg(prefix_rules($rules, 'erros_'));
+        $rules=[
+            'login'=>'O Campo login é obrigatório.', //este caso é de evitar pois podes querer personalizar a msg
+            'pass'=>'O Campo senha é obrigatório.'
+        ];
+        dbg(prefix_rules($rules, 'erros_'));
 
         \app\view\Login::render(); die();
     }

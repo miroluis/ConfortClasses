@@ -46,8 +46,20 @@ function validate_input(array $rules_required, array $rules, array $input):array
 }
 
 // Coloca um prefixo em todas as keys de um array
-function prefix_keys(array $arr, string $prefix):array{
-
+// se indice numerico, faz-o nos values
+function prefix_rules(array $rules, string $prefix, string $postfix=''):array{
+    if(array_is_list($rules))
+        return array_map(
+            fn($k):string => $prefix . $k . $postfix,
+            $rules
+        );
+    return array_combine(
+        array_map(
+        fn($k):string => $prefix . $k . $postfix,
+        array_keys($rules)
+        ),
+        $rules
+    );
 }
 
 
