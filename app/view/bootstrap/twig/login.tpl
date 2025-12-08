@@ -11,9 +11,9 @@
 
 <!-- Senha | Passwrod input-->
 <div class="form-group row">
-    <label class="col-md-4 col-form-label" for="Pass">Senha</label>
+    <label class="col-md-4 col-form-label" for="pass">Senha</label>
     <div class="col-md-4">
-        <input id="Pass" name="Pass" type="password" placeholder="" class="form-control input-md" required="">
+        <input id="pass" name="pass" type="password" placeholder="" class="form-control input-md" required="">
         
     </div>
 </div>

@@ -14,14 +14,11 @@ class Login {
     public static function login(){
         if(session_status() === PHP_SESSION_NONE)
             session_start();
-        // session_status() === PHP_SESSION_NONE && session_start();
-        // session_status() === PHP_SESSION_ACTIVE ?: session_start();
-        // $_SESSION['id'] = 12;
-        // $_SESSION['name'] = 'Joao';
         $cnt_session = count($_SESSION);
         if($cnt_session>0) return;
 
-        [$method, $input] = get_payload();
+        
+/*        [$method, $input] = get_payload();
         dbg($method); dbg($input);
         unset($input['pass']);
 
@@ -29,14 +26,37 @@ class Login {
             'login'=>'O Campo login é obrigatório.', //este caso é de evitar pois podes querer personalizar a msg
             'pass'=>'O Campo senha é obrigatório.'
         ];
-        $dados=keyIsInKeyArray($rules_required, $input);
-        $erros=getMissingReqFields($rules_required, $input);
+        $rules = $rules_required;
+        // $dados=keyIsInKeyArray($rules_required, $input);
+        // $erros=getMissingReqFields($rules_required, $input);
+        [$erros, $dados] = validate_input( $rules_required, $rules, $input);
         dbg($dados);dbg($erros);
 
-        $rules_required=[0=>'login', 'pass'];
-        $dados=valuesIsInKeyArray($rules_required, $input);
-        $erros=getMissingReqFields($rules_required, $input);
+        $rules_required=[0=>'login', 'pass']; $rules = $rules_required;
+        // $dados=valuesIsInKeyArray($rules_required, $input);
+        // $erros=getMissingReqFields($rules_required, $input);
+        [$erros, $dados] = validate_input( $rules_required, $rules, $input);
         dbg($dados);dbg($erros);
+*/
+
+
+        [$method, $input] = get_payload();
+        $rules_required=['login', 'pass']; $rules = $rules_required;
+        [$erros, $dados] = validate_input( $rules_required, $rules, $input);
+         dbg($dados);
+         dbg(" a seguir erros");
+         dbg(count($erros));
+        if(count($erros)<=0 and count($dados) === count($rules)){
+            $row = \app\model\Login::select_record($dados);
+            if(count($row) > 0){
+                //login ok
+                $_SESSION = $row;
+                return;
+            }
+            else    
+                dbg("deu erro retornou 0 row's");
+        }
+
 
         \app\view\Login::render(); die();
     }

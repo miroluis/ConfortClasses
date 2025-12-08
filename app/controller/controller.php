@@ -34,10 +34,15 @@ function getMissingReqFields(array $rules_required, array $input): array{
     );
 }
 
-// valida se os campos existem e se os requeridos estão preenchidos
+// valida se os campos existem e se os requeridos estão todos
 // retorna: [$dados, $erros]
-function validate_input(array $input, array $rules_required, array $rules):array{
-
+function validate_input(array $rules_required, array $rules, array $input):array{
+    if(array_is_list($rules))
+        $dados=valuesIsInKeyArray($rules, $input);
+    else
+        $dados=keyIsInKeyArray($rules, $input);
+    $erros=getMissingReqFields($rules_required, $input);
+    return [$erros, $dados];
 }
 
 // Coloca um prefixo em todas as keys de um array
