@@ -1,6 +1,6 @@
 <?php
 namespace app\view;
-include __DIR__ . "/../../config/config.php";
+include_once __DIR__ . "/../../config/config.php";
 class Dashboard {
 //--------------
 static function render() {

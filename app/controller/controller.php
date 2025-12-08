@@ -62,8 +62,6 @@ function prefix_rules(array $rules, string $prefix, string $postfix=''):array{
     );
 }
 
-
-
 // vê se os valores de $rules existem nas keys de $input
 // retorna de $input os que existentem
 function valuesIsInKeyArray(array $rules, array $input):array{
@@ -74,6 +72,22 @@ function valuesIsInKeyArray(array $rules, array $input):array{
 // retorna de $input os elementos existentes
 function keyIsInKeyArray(array $rules, array $input):array{
     return array_intersect_key($input, $rules);
+}
+
+#retorna a primeira lingua suportada pelo browser
+function getBrowserLang():string{
+    $lang = $_SERVER['HTTP_ACCEPT_LANGUAGE'] ?? 'en';
+    $a=array_map(
+        fn($v) => ['lang'=>trim(explode(';', $v)[0]),
+                    'q'=> (float)(explode('q=', $v)[1] ?? 1)],
+        explode(',', $lang)
+    );
+    // dbg($a);
+    usort($a, fn($a, $b) => $b['q'] <=> $a['q']);
+    // dbg($a);
+    // usort($a, fn($a, $b) => $a['q'] <=> $b['q']);
+    // dbg($a);
+    return count($a)>0 ? $a[0]['lang'] : 'en';
 }
 
 ?>

@@ -1,7 +1,7 @@
 <?php
 
 namespace app\view;
-include __DIR__ . "/../../config/config.php";
+include_once __DIR__ . "/../../config/config.php";
 class Login {
 static function render() {
 
