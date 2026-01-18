@@ -24,12 +24,18 @@
             <td>{{ sala.id_sala }}</td>
             <td>{{ sala.nome }}</td>
             <td>
+                <a href="index.php?a=dispositivos&id_sala={{ sala.id_sala }}"
+                class="btn btn-primary btn-sm">
+                    Dispositivos
+                </a>
+
                 <a href="index.php?a=salas_delete&id={{ sala.id_sala }}&id_empresa={{ id_empresa }}" 
-                    onclick="return confirm('Tem certeza que deseja apagar esta sala?');"
-                    class="btn btn-danger btn-sm">
+                onclick="return confirm('Tem certeza que deseja apagar esta sala?');"
+                class="btn btn-danger btn-sm">
                     Apagar
                 </a>
             </td>
+
         </tr>
         {% else %}
         <tr>

@@ -1,5 +1,14 @@
 <h2>Dispositivos</h2>
 
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item">
+        <a href="index.php?a=salas&id_empresa={{ id_empresa }}">Salas</a>
+    </li>
+    <li class="breadcrumb-item active">
+        Dispositivos
+    </li>
+</ol>
+
 <form method="get" action="index.php" style="margin-bottom: 12px;">
   <input type="hidden" name="a" value="dispositivos">
 
@@ -18,7 +27,9 @@
   <a href="index.php?a=dispositivo_create&id_sala={{ id_sala }}">+ Novo dispositivo</a>
 </form>
 
-<table border="1" cellpadding="6" cellspacing="0" width="100%">
+<!-- <table border="1" cellpadding="6" cellspacing="0" width="100%"> -->
+<table class="table table-striped table-bordered">
+
   <thead>
     <tr>
       <th>ID</th>

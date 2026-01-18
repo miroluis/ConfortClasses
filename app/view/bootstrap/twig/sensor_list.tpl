@@ -1,5 +1,17 @@
 <h2>Sensores</h2>
 
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item">
+        <a href="index.php?a=salas&id_empresa={{ dispositivo.id_empresa }}">Salas</a>
+    </li>
+    <li class="breadcrumb-item">
+        <a href="index.php?a=dispositivos&id_sala={{ dispositivo.id_sala }}">Dispositivos</a>
+    </li>
+    <li class="breadcrumb-item active">
+        Sensores
+    </li>
+</ol>
+
 <p>
   Dispositivo: <strong>{{ dispositivo.nome }}</strong>
   {% if dispositivo.mac_address %} — MAC: {{ dispositivo.mac_address }}{% endif %}
@@ -30,7 +42,8 @@
         <td>{{ s.id_sensor }}</td>
         <td>{{ s.nome }}</td>
         <td>{{ s.tipo_sensor }}</td>
-        <td>{{ s.id_unidade }}</td>
+        <!-- <td>{{ s.id_unidade }}</td> -->
+         <td>{{ s.unidade_simbolo }}</td>
         <td>{{ s.token }}</td>
         <td>{{ s.ordem_leitura }}</td>
         <td>{{ s.ativo ? 'Sim' : 'Não' }}</td>

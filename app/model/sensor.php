@@ -22,14 +22,23 @@ class Sensor
     public static function allByDispositivo(int $id_dispositivo): array
     {
         $pdo = db_access();
-        $sql = "SELECT *
-                FROM sensor
-                WHERE id_dispositivo = :id_dispositivo
-                ORDER BY ordem_leitura IS NULL, ordem_leitura, id_sensor";
+
+        $sql = "
+            SELECT s.*, u.simbolo AS unidade_simbolo
+            FROM sensor s
+            JOIN unidade_medida u ON u.id_unidade = s.id_unidade
+            WHERE s.id_dispositivo = ?
+            ORDER BY s.ordem_leitura, s.nome
+        ";
+
         $stmt = $pdo->prepare($sql);
-        $stmt->execute([':id_dispositivo' => $id_dispositivo]);
-        return $stmt->fetchAll();
+        $stmt->execute([$id_dispositivo]);
+
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
+
+
+
 
     /**
      * Buscar sensor por ID
