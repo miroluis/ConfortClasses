@@ -35,10 +35,12 @@
         <td>{{ s.ordem_leitura }}</td>
         <td>{{ s.ativo ? 'Sim' : 'Não' }}</td>
         <td>
+          <a href="index.php?a=leituras&id_sensor={{ s.id_sensor }}">Leituras</a>
+          |
           <a href="index.php?a=sensor_edit&id_sensor={{ s.id_sensor }}">Editar</a>
           |
           <a href="index.php?a=sensor_delete&id_sensor={{ s.id_sensor }}"
-             onclick="return confirm('Apagar este sensor?');">Apagar</a>
+            onclick="return confirm('Apagar este sensor?');">Apagar</a>
         </td>
       </tr>
     {% else %}

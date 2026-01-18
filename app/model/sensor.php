@@ -136,4 +136,13 @@ class Sensor
             ':ativo' => $ativo
         ]);
     }
+
+    public static function findByToken(string $token)
+    {
+        $pdo = db_access();
+        $sql = "SELECT * FROM sensor WHERE token = :token LIMIT 1";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([':token' => $token]);
+        return $stmt->fetch();
+    }
 }

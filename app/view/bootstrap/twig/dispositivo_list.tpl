@@ -38,11 +38,16 @@
         <td>{{ d.mac_address }}</td>
         <td>{{ d.ativo ? 'Sim' : 'Não' }}</td>
         <td>
+          <a href="index.php?a=sensores&id_dispositivo={{ d.id_dispositivo }}">Sensores</a>
+          |
+          <a href="index.php?a=leituras_dispositivo&id_dispositivo={{ d.id_dispositivo }}">Leituras</a>
+          |
           <a href="index.php?a=dispositivo_edit&id_dispositivo={{ d.id_dispositivo }}">Editar</a>
           |
           <a href="index.php?a=dispositivo_delete&id_dispositivo={{ d.id_dispositivo }}"
-             onclick="return confirm('Apagar este dispositivo?');">Apagar</a>
+            onclick="return confirm('Apagar este dispositivo?');">Apagar</a>
         </td>
+
       </tr>
     {% else %}
       <tr><td colspan="6">Sem dispositivos.</td></tr>

@@ -30,6 +30,8 @@ $protected = [
 
     'sensores', 'sensor_create', 'sensor_store', 'sensor_edit', 'sensor_update', 'sensor_delete',
 
+    'leituras', 'leituras_dispositivo',
+
     'logout'
 ];
 
@@ -143,6 +145,23 @@ switch ($a){
         $controller = new \app\controller\SensorController();
         $controller->delete();
         break;
+        //API
+    case 'api_leitura':
+        $controller = new \app\controller\ApiController();
+        $controller->leitura();
+        break;
+
+        // Leituras
+    case 'leituras':
+        $controller = new \app\controller\LeituraController();
+        $controller->bySensor();
+        break;
+
+    case 'leituras_dispositivo':
+        $controller = new \app\controller\LeituraController();
+        $controller->byDispositivo();
+        break;
+
 
 // Home
     case 'home':
