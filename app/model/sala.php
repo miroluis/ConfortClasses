@@ -2,6 +2,15 @@
 namespace app\model;
 
 class Sala{
+
+    public static function all(): array
+    {
+        $pdo = db_access();
+        $sql = "SELECT * FROM sala ORDER BY nome";
+        $stmt = $pdo->query($sql);
+        return $stmt->fetchAll();
+    }
+
     public static function allByEmpresa(int $id_empresa):array{
         $pdo = db_access();
         $sql = "SELECT id_sala, id_empresa, nome

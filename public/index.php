@@ -24,6 +24,10 @@ $a = $_GET['a'] ?? 'home';
 $protected = [
     'dashboard', 'empresas', 'empresa_create', 'empresa_store', 'empresas_delete', 
     'salas', 'sala_create', 'sala_store', 'salas_delete', 
+
+    'dispositivos', 'dispositivo_create', 'dispositivo_store', 
+    'dispositivo_edit', 'dispositivo_update', 'dispositivo_delete',
+
     'logout'
 ];
 
@@ -74,6 +78,37 @@ switch ($a){
         break;
     case 'salas_delete':
         $controller = new \app\controller\SalaController();
+        $controller->delete();
+        break;
+
+    // Dispositivos
+    case 'dispositivos':
+        $controller = new \app\controller\DispositivoController();
+        $controller->index();
+        break;
+
+    case 'dispositivo_create':
+        $controller = new \app\controller\DispositivoController();
+        $controller->create();
+        break;
+
+    case 'dispositivo_store':
+        $controller = new \app\controller\DispositivoController();
+        $controller->store();
+        break;
+
+    case 'dispositivo_edit':
+        $controller = new \app\controller\DispositivoController();
+        $controller->edit();
+        break;
+
+    case 'dispositivo_update':
+        $controller = new \app\controller\DispositivoController();
+        $controller->update();
+        break;
+
+    case 'dispositivo_delete':
+        $controller = new \app\controller\DispositivoController();
         $controller->delete();
         break;
 // Home
