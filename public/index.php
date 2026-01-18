@@ -28,6 +28,8 @@ $protected = [
     'dispositivos', 'dispositivo_create', 'dispositivo_store', 
     'dispositivo_edit', 'dispositivo_update', 'dispositivo_delete',
 
+    'sensores', 'sensor_create', 'sensor_store', 'sensor_edit', 'sensor_update', 'sensor_delete',
+
     'logout'
 ];
 
@@ -111,6 +113,37 @@ switch ($a){
         $controller = new \app\controller\DispositivoController();
         $controller->delete();
         break;
+        // Sensores
+    case 'sensores':
+        $controller = new \app\controller\SensorController();
+        $controller->index();
+        break;
+
+    case 'sensor_create':
+        $controller = new \app\controller\SensorController();
+        $controller->create();
+        break;
+
+    case 'sensor_store':
+        $controller = new \app\controller\SensorController();
+        $controller->store();
+        break;
+
+    case 'sensor_edit':
+        $controller = new \app\controller\SensorController();
+        $controller->edit();
+        break;
+
+    case 'sensor_update':
+        $controller = new \app\controller\SensorController();
+        $controller->update();
+        break;
+
+    case 'sensor_delete':
+        $controller = new \app\controller\SensorController();
+        $controller->delete();
+        break;
+
 // Home
     case 'home':
         echo renderNtpl('base', [
