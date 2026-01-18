@@ -3,25 +3,24 @@ namespace app\model;
 include_once __DIR__ . '/../../config/config.php';
 class Login{
 //-----------------------------------
-    // static function select_recordv1($login, $senha){
-    //     $pdo = \db_access();
-    //     $sql = "SELECT id, login, level, user, email  FROM user WHERE login = ? AND pass = ?;";
-    //     $stmt = $pdo->prepare($sql);
-    //     $stmt->execute([$login, $senha]);
-    //     $row = $stmt->fetchAll(\PDO::FETCH_ASSOC);
-    //     dbg($row);
-    //     return $row ?: [];
-    // }
+    /**
+     * Procura utilizador por user+pass (modo simples, password em texto).
+     * Devolve 1 registo (associative array) ou [] se não existir.
+     */
     //-------------------------------
     static function select_record($dados){
         $pdo = db_access();
-        $sql = "SELECT id, login, level, name, email  FROM user WHERE 
-            login =:login AND pass =:pass;";
+       $sql = "SELECT id_user, id_empresa, user, pass, perfil
+                FROM utilizador
+                WHERE user = :user AND pass = :pass
+                LIMIT 1";
         $stmt = $pdo->prepare($sql);
-        $stmt->execute($dados);
-        $row = $stmt->fetchAll(\PDO::FETCH_ASSOC);
-        // dbg($row);
-        return $row ?: [];
+        $stmt->execute([
+            ':user' => $dados['user'] ?? '',
+            ':pass' => $dados['pass'] ?? '',
+        ]);
+        $row = $stmt->fetch(\PDO::FETCH_ASSOC);
+        return $row ? $row : [];
     }
 //-----------------------------------
 }   

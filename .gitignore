@@ -1,0 +1,10 @@
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Cache / runtime
+third/cache/
+third/local/
+
+# Logs (se existirem)
+*.log

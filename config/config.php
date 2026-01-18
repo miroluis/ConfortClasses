@@ -1,11 +1,24 @@
 <?php
+
+require_once __DIR__ . '/../third/vendor/autoload.php';
+
+
 define('DB_HOST', '127.0.0.1');
 // define('DB_PORT', '3306');
-define('DB_NAME', '04-php');
+//define('DB_NAME', '04-php');
+define('DB_NAME', 'BD_Escola_Sense');
 define('DB_USER', 'root');
 define('DB_PASS', 'supersegredo');  
 // define("LIB_TEMPLATE", "php");
 define("LIB_TEMPLATE", "twig");
+
+if (!function_exists('dbg')) {
+    function dbg($var){
+        echo "<pre>";
+        print_r($var);
+        echo "</pre>";
+    }
+}
 
 function db_access(){
     $dsn = 'mysql:host=' . DB_HOST . ';dbname=' . DB_NAME . ';charset=utf8mb4';

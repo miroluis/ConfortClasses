@@ -4,7 +4,7 @@
 <div class="form-group row">
     <label class="col-md-4 col-form-label" for="login">utilizador</label>
     <div class="col-md-4">
-        <input id="login" name="login" type="text" placeholder="" class="form-control input-md" required="">
+        <input id="login" name="user" type="text" placeholder="" class="form-control input-md" required="">
         
     </div>
 </div>
