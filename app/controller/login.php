@@ -7,13 +7,26 @@ class Login {
 
     public static function amIlogged(){
         if (session_status() === PHP_SESSION_NONE) session_start();
-        return isset($_SESSION['id_user']);
+        return !empty($_SESSION);
     }
 
-    public static function login(){
+    public static function login(): void
+    {
         if (session_status() === PHP_SESSION_NONE) session_start();
-        if (self::amIlogged()) return;
 
+        // Se já está logado, segue para dashboard
+        if (self::amIlogged()) {
+            header('Location: index.php?a=dashboard');
+            exit;
+        }
+
+        // GET -> só mostra o formulário
+        if (($_SERVER['REQUEST_METHOD'] ?? 'GET') !== 'POST') {
+            \app\view\Login::render();
+            exit;
+        }
+
+        // POST -> processa credenciais
         [$method, $input] = get_payload();
 
         $rules_required = ['user', 'pass'];
@@ -26,19 +39,25 @@ class Login {
 
             if (!empty($row)) {
                 $_SESSION = $row;
+
+                // garantir id_user para o amIlogged clássico
+                if (!isset($_SESSION['id_user'])) {
+                    $_SESSION['id_user'] = $row['id_user'] ?? $row['id'] ?? 1;
+                }
+
                 $l = getBrowserLang();
                 $_SESSION['lang'] = $_SESSION['lang'] ?? $l;
-                //return;
+
                 header('Location: index.php?a=dashboard');
                 exit;
-            } else {
-                dbg("Login inválido: user/pass não encontrados");
             }
         }
 
+        // Se chegou aqui: login falhou -> volta a mostrar form
         \app\view\Login::render();
-        die();
+        exit;
     }
+
 
     public static function logout(){
         if (session_status() === PHP_SESSION_NONE) session_start();

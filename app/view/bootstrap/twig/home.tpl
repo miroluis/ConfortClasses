@@ -1,13 +1,15 @@
-<h1>ConfortClasses</h1>
-<p>Atalhos rápidos:</p>
+<h2>ConfortClasses</h2>
 
+<p><strong>Atalhos rápidos:</strong></p>
 <ul>
-  <li><a href="index.php?a=empresas">Empresas</a></li>
-  <li><a href="index.php?a=dispositivos">Dispositivos</a></li>
+    <li><a href="index.php?a=login">Empresas</a></li>
+    <li><a href="index.php?a=login">Dispositivos</a></li>
 </ul>
 
-<hr>
+<p>
+  <a href="index.php?a=login">➡ Entrar no Dashboard</a>
+</p>
 
-<p class="text-muted">
-  (Para ver Salas e Leituras, entra primeiro numa Empresa / Sala.)
+<p>
+    (Para gerir Empresas, Salas, Dispositivos e Leituras é necessário efetuar login.)
 </p>

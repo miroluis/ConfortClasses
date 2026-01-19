@@ -30,22 +30,28 @@ $protected = [
 
     'sensores', 'sensor_create', 'sensor_store', 'sensor_edit', 'sensor_update', 'sensor_delete',
 
-    'leituras', 'leituras_dispositivo',
-
-    'logout'
+    'leituras', 'leituras_dispositivo'
 ];
 
 if (in_array($a, $protected, true)) {
-    app\controller\Login::login();
+    if (!app\controller\Login::amIlogged()) {
+        header('Location: index.php?a=login');
+        exit;
+    }
 }
 //Zona protegida, só acessível a quem está logado
 switch ($a){
     case 'dashboard':
-        app\view\Dashboard::render();
+        //app\view\Dashboard::render();
+                // Dashboard
+        (new \app\controller\DashboardController())->index();
         break;
-    // case 'login':
-    //     app\view\Login::render();
-    //     break;
+
+    case 'login':
+        app\controller\Login::login();
+        break;
+
+
     case 'logout':
         app\controller\Login::logout();
         // echo "Logout efetuado.<br>";
@@ -161,6 +167,8 @@ switch ($a){
         $controller = new \app\controller\LeituraController();
         $controller->byDispositivo();
         break;
+
+
 
 
 // Home
