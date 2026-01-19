@@ -165,14 +165,16 @@ switch ($a){
 
 // Home
     case 'home':
-        echo renderNtpl('base', [
-            'title' => 'Home',
-            'content' => '<p>OK — Twig a renderizar e config carregado.</p>'
-            ]);
+        echo renderNtpl(
+            'base',
+            ['title' => 'Home'],
+            'home',
+            [0 => 'content']
+        );
         break;
     default:
-        echo "Ação inválida.<br>";
-        break;
+        header('Location: index.php?a=home');
+        exit;
 }
 
 
